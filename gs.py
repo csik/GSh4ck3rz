@@ -20,7 +20,8 @@ async def main():
     page = await setup()
     elements = await get_submissions(page)
 
-    #example of getting to a student submission page
+    # example of getting to a student submission page -- this would be a loop,
+    # incrementing through elements, possibly with multiple workers
     e = elements[3]
     await e.click()
 
@@ -28,7 +29,6 @@ async def main():
     btn = await page.waitForXPath('//span[text()="Reselect Pages"]')
     await btn.click()
 
-    #loop through elements here
     #check to see if tagButtons are in pageThumbnail selectPagesPage
     #await page.goBack()
 
