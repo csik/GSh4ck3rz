@@ -7,14 +7,17 @@ Authentication currently just using the user data feature of pyppeteer -- it wil
 
 Create a python 3.6+ virtualenv in the directory, activate, then 
 
-> virtualenv venv
-> source venv/bin/activate
-> pip install pyppeteer
-
+```
+  > virtualenv venv
+  > source venv/bin/activate
+  > pip install pyppeteer
+```
 
 Run the script once:
 
-> python gs.py
+```
+  > python gs.py
+```
 
 Authenicate, then quit the browser. Run it again, you're good until the authentication expires.
 
