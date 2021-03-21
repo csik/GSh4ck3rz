@@ -3,7 +3,7 @@ from pyppeteer import launch
 
 #assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/965994/review_grades'
 #assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/987230/review_grades'
-assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/987230/grade'
+assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/1078556/grade'
 empypage_placeholder = 'https://www.gradescope.com/assets/missing_placeholder-4d611cea193304f8a8455a58fd8082eed1ca4a0ea2082adb982b51a41eaa0c87.png'
 
 async def setup(assignmentpage):
@@ -39,9 +39,7 @@ async def advance_page(page):
     await btn.click()
 
 async def get_text(page, element):
-     return await page.evaluate('''(element) => {
-        element.textContent;
-     }''', element)
+     return await page.evaluate('(element) => element.textContent', element)
 
 async def get_link(page, element):
     return await page.evaluate('''(element) => {
@@ -51,14 +49,13 @@ async def get_link(page, element):
 async def mark_reading_not_selected(page):
     btns = await page.querySelectorAll('.rubricItem--key')
     btn = btns[0]
-    if await page.evaluate("(btn) => btn.getAttribute('aria-pressed')", btn) = 'false':
+    if await page.evaluate("(btn) => btn.getAttribute('aria-pressed')", btn) == 'false':
         await btn.click()
 
 async def go_through_pages(page):
     while(1):
      if await has_placeholder_image(page):
         await mark_reading_not_selected(page)
-    #sleep(.5)
      current_page = await page.xpath('//*[@id="main-content"]/div/main/section/div/span/span/abbr')
      current_page = current_page[0]
      last_page = await page.xpath('//*[@id="main-content"]/div/main/section/div/strong/a')
@@ -72,7 +69,11 @@ async def main():
     page = await setup(assignmentpage)
     elements = await get_submissions(page)
     links = await get_all_grading_links(elements)
-
+    for link in links:
+         await page.goto(link)
+         await go_through_pages(page)
     #check to see if tagButtons are in pageThumbnail selectPagesPage
     #await page.goBack()
+
+asyncio.get_event_loop().run_until_complete(main())
 
