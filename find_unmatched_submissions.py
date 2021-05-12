@@ -2,7 +2,8 @@ import asyncio
 from pyppeteer import launch
 
 #assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/965994/review_grades'
-assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/1078556/review_grades'
+#assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/1078556/review_grades'
+assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/1119721/review_grades'
 
 async def setup():
     browser = await launch({"autoClose":False,'headless': False, 'userDataDir':'./pyppeteer_data'})

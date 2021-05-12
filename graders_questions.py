@@ -4,7 +4,7 @@ import os
 # Quick hack to test CSVs and pandas
 
 directory = r'/Users/csik/Downloads/INFO4240_STS4240_Design_Workbook_Unit_1 2'
-
+directory = r"/Users/csik/Downloads/INFO4240_STS4240_Design_Workbook_Unit_3"
 dfs=[]
 for entry in os.scandir(directory):
     if (entry.path.endswith(".csv")):

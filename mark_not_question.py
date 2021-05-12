@@ -3,7 +3,8 @@ from pyppeteer import launch
 
 #assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/965994/review_grades'
 #assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/987230/review_grades'
-assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/1078556/grade'
+#assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/1078556/grade'
+assignmentpage = 'https://www.gradescope.com/courses/228839/assignments/1119721/grade'
 empypage_placeholder = 'https://www.gradescope.com/assets/missing_placeholder-4d611cea193304f8a8455a58fd8082eed1ca4a0ea2082adb982b51a41eaa0c87.png'
 
 async def setup(assignmentpage):
@@ -75,5 +76,6 @@ async def main():
     #check to see if tagButtons are in pageThumbnail selectPagesPage
     #await page.goBack()
 
-asyncio.get_event_loop().run_until_complete(main())
+if '__main__' == __name__:
+    asyncio.get_event_loop().run_until_complete(main())
 
