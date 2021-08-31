@@ -133,3 +133,4 @@ dmypy.json
 
 # Misc
 pyppeteer_data/
+watch_data/

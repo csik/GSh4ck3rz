@@ -1,7 +1,7 @@
 import asyncio
 from pyppeteer import launch
 
-assignmentpage = 'https://www.gradescope.com/courses/288777/assignments/1449216/grade'
+assignmentpage = 'https://www.gradescope.com/courses/288777/assignments/1451657/grade'
 empypage_placeholder = 'https://www.gradescope.com/assets/missing_placeholder-4d611cea193304f8a8455a58fd8082eed1ca4a0ea2082adb982b51a41eaa0c87.png'
 
 async def setup(assignmentpage):
