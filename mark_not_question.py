@@ -1,7 +1,18 @@
+# Add location of INFO 4240 grading library to module search path
+import sys
+BASE_PATH = "/Users/ianarawjo/Documents/INFO-4240-Grading-Tools/"
+sys.path.append(BASE_PATH)
+
 import asyncio
+import os
 from pyppeteer import launch
 
-assignmentpage = 'https://www.gradescope.com/courses/288777/assignments/1455574/grade'
+# Ask for which assignment to mark 'not question' for:
+import load
+CONFIG_PATH = os.path.join(BASE_PATH, "config.json")
+assn_name, assn_info = load.promptSelectAssignment(load.config(CONFIG_PATH))
+assignmentpage = os.path.join(assn_info["url"], "grade")
+
 empypage_placeholder = 'https://www.gradescope.com/assets/missing_placeholder-4d611cea193304f8a8455a58fd8082eed1ca4a0ea2082adb982b51a41eaa0c87.png'
 
 async def setup(assignmentpage):
